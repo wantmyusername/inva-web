@@ -37,6 +37,12 @@ const SEO = ({ title, description }) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
+      {/* FAVICON */}
+      <link
+        rel="icon"
+        type="image/jpeg"
+        href="https://inva.edu.mx/logo.jpg"
+      />
     </Helmet>
   );
 };
