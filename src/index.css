@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos extra */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-gray-700 bg-gray-50;
+}
+
+.btn-primary {
+  @apply bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all duration-300 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-white text-brand border border-brand px-6 py-3 rounded-full font-semibold hover:bg-gray-50 transition-all duration-300;
+}
+
+h1, h2, h3 {
+  @apply text-gray-900 font-bold;
+}
+/* --- Animaciones Premium --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* Efecto Cristal */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
