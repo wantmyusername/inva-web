@@ -2,51 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- FIX DE FUENTES --- */
 @layer base {
-  html, body {
-    /* Prioridad: Outfit (Google) -> Arial -> Sans-Serif */
-    font-family: 'Outfit', Arial, Helvetica, sans-serif !important;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-600 antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight text-slate-900;
+  }
+
+  ::selection {
+    @apply bg-brand text-white;
   }
 }
 
-html {
-  scroll-behavior: smooth;
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-brand-ink shadow-sm transition-colors duration-200 hover:bg-accent-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors duration-200 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand;
+  }
 }
 
-body {
-  @apply text-gray-700 bg-gray-50;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* ... el resto de tu CSS (botones, animaciones) déjalo igual ... */
-
-.btn-primary {
-  @apply bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all duration-300 shadow-lg hover:shadow-xl;
-}
-
-.btn-secondary {
-  @apply bg-white text-brand border border-brand px-6 py-3 rounded-full font-semibold hover:bg-gray-50 transition-all duration-300;
-}
-
-h1, h2, h3 {
-  @apply text-gray-900 font-bold;
-}
-
-/* Animaciones y Glass Card (sin cambios) */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out both;
 }
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-in,
+  .animate-fade-in-up {
+    animation: none;
+  }
 }
